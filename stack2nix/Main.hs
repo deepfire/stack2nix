@@ -9,6 +9,7 @@ args = Args
        <$> optional (strOption $ long "revision" <> help "revision to use when fetching from VCS")
        <*> optional (strOption $ short 'o' <> help "output file for generated nix expression")
        <*> strArgument (metavar "URI")
+       <*> (flag False True $ long "system-ghc" <> help "pass --system-ghc to stack invocations")
 
 main :: IO ()
 main = stack2nix =<< execParser opts
